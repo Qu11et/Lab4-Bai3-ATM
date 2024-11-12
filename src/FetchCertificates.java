@@ -8,7 +8,7 @@ public class FetchCertificates {
     public static void main(String[] args) {
         try {
             // Define the script file path
-            File scriptFile = new File("fetch_certs.sh");
+            File scriptFile = new File("src/fetch_certs.sh");
 
             // Check if the script file exists
             if (!scriptFile.exists()) {
@@ -20,10 +20,12 @@ public class FetchCertificates {
             scriptFile.setExecutable(true);
 
             // Prepare ProcessBuilder to execute the script
-            ProcessBuilder processBuilder = new ProcessBuilder(scriptFile.getAbsolutePath());
+             ProcessBuilder processBuilder = new ProcessBuilder("bash", scriptFile.getAbsolutePath());
 
             // Start the process
             Process process = processBuilder.start();
+
+            
 
             // Read the output from the script execution
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));

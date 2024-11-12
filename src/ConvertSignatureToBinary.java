@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.IOException;
 
 public class ConvertSignatureToBinary {
@@ -7,17 +6,17 @@ public class ConvertSignatureToBinary {
         try {
             // Step 1: Convert the certificate to DER format (binary)
             ProcessBuilder toDerProcessBuilder = new ProcessBuilder(
-                    "openssl", "x509", "-in", "c0.crt", "-noout", "-outform", "DER", "-out", "c0.der"
+                    "openssl", "x509", "-in", "c1.pem", "-outform", "DER", "-out", "c1.der"
             );
             Process toDerProcess = toDerProcessBuilder.start();
             int toDerExitCode = toDerProcess.waitFor();
 
             if (toDerExitCode == 0) {
-                System.out.println("Certificate converted to DER format successfully.");
+            System.out.println("Certificate converted to DER format successfully.");
 
                 // Step 2: Extract the signature in binary from DER format
                 ProcessBuilder extractSignatureProcessBuilder = new ProcessBuilder(
-                        "openssl", "asn1parse", "-in", "c0.der", "-inform", "DER", "-out", "signature.bin", "-noout", "-strparse", "4"
+                        "openssl", "asn1parse", "-in", "c1.der", "-inform", "DER", "-out", "signature.bin", "-noout", "-strparse", "4"
                 );
                 Process extractSignatureProcess = extractSignatureProcessBuilder.start();
                 int extractSignatureExitCode = extractSignatureProcess.waitFor();
@@ -27,6 +26,7 @@ public class ConvertSignatureToBinary {
                 } else {
                     System.out.println("Error extracting signature. Exit code: " + extractSignatureExitCode);
                 }
+
 
             } else {
                 System.out.println("Error converting certificate to DER format. Exit code: " + toDerExitCode);

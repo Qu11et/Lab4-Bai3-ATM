@@ -14,9 +14,9 @@ public class Main {
             System.out.println("Extracting signature...");
             ExtractSignature.main(null);
 
-            // Step 4: Convert the signature to binary
-            System.out.println("Converting signature to binary...");
-            ConvertSignatureToBinary.main(null);
+             //Step 4: Convert the signature to binary
+           System.out.println("Converting signature to binary...");
+          ConvertSignatureToBinary.main(null);
 
             // Step 5: Get TBS (To-Be-Signed) data of c0.crt
             System.out.println("Extracting TBS data...");

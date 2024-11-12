@@ -8,7 +8,7 @@ public class VerifySignature {
         try {
             // Command to verify the signature
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    "openssl", "dgst", "-sha256", "-verify", "public_key.pem",
+                    "openssl", "dgst", "-sha256", "-verify", "c1.crt",
                     "-signature", "signature.bin", "tbs_data.bin"
             );
 
